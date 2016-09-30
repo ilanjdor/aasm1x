@@ -1,0 +1,28 @@
+	.file	"mystery3.c"
+	.section	.rodata.str1.1,"aMS",@progbits,1
+.LC0:
+	.string	"It worked!"
+	.text
+	.globl	mystery3
+	.type	mystery3, @function
+mystery3:
+.LFB23:
+	movl	%edi, %eax
+	andl	%esi, %eax
+	notl	%eax
+	notl	%edi
+	orl	%edi, %esi
+	cmpl	%esi, %eax
+	je	.L8
+.L7:
+	rep ret
+.L8:
+	subq	$8, %rsp
+	movl	$.LC0, %edi
+	call	puts
+	addq	$8, %rsp
+	jmp	.L7
+.LFE23:
+	.size	mystery3, .-mystery3
+	.ident	"GCC: (Ubuntu 6.2.0-3ubuntu11~14.04) 6.2.0 20160901"
+	.section	.note.GNU-stack,"",@progbits
